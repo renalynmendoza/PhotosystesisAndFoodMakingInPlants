@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photosynthesis — Food Making in Plants</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg-ring ring-1"></div>
+  <div class="hero-bg-ring ring-2"></div>
+  <div class="hero-bg-ring ring-3"></div>
+  <div class="hero-bg-ring ring-4"></div>
+
+  <svg class="hero-leaf-svg" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M100 220 C100 220 20 160 20 90 C20 44 55 10 100 10 C145 10 180 44 180 90 C180 160 100 220 100 220Z" fill="rgba(45,110,71,0.6)" stroke="rgba(74,158,104,0.8)" stroke-width="1.5"/>
+    <path d="M100 220 C100 220 20 160 20 90" stroke="rgba(168,213,181,0.5)" stroke-width="1" fill="none"/>
+    <path d="M100 10 L100 220" stroke="rgba(168,213,181,0.6)" stroke-width="1.5" fill="none"/>
+    <path d="M100 60 Q135 80 155 100" stroke="rgba(168,213,181,0.35)" stroke-width="1" fill="none"/>
+    <path d="M100 90 Q130 108 148 125" stroke="rgba(168,213,181,0.35)" stroke-width="1" fill="none"/>
+    <path d="M100 120 Q125 135 138 150" stroke="rgba(168,213,181,0.35)" stroke-width="1" fill="none"/>
+    <path d="M100 60 Q65 80 45 100" stroke="rgba(168,213,181,0.35)" stroke-width="1" fill="none"/>
+    <path d="M100 90 Q70 108 52 125" stroke="rgba(168,213,181,0.35)" stroke-width="1" fill="none"/>
+    <path d="M100 120 Q75 135 62 150" stroke="rgba(168,213,181,0.35)" stroke-width="1" fill="none"/>
+    <circle cx="100" cy="90" r="5" fill="rgba(201,168,76,0.6)" />
+    <circle cx="100" cy="60" r="3" fill="rgba(201,168,76,0.4)" />
+    <circle cx="100" cy="120" r="3" fill="rgba(201,168,76,0.4)" />
+  </svg>
+
+  <p class="hero-eyebrow">Plant Biology · Energy Conversion</p>
+  <h1 class="hero-title">Photo<em>synthesis</em></h1>
+  <p class="hero-subtitle">Food Making in Plants</p>
+  <p class="hero-desc">The ancient alchemy of sunlight transformed into life — how every green leaf silently powers our world, breath by breath, molecule by molecule.</p>
+
+  <div class="scroll-hint">
+    <span>Explore</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- WHAT IS IT -->
+<section class="reveal">
+  <p class="section-label">01 — Overview</p>
+  <h2 class="section-title">What is <em>Photosynthesis?</em></h2>
+  <p class="section-text">
+    Photosynthesis is the biological process by which green plants, algae, and certain bacteria convert light energy — primarily from the sun — into chemical energy stored as glucose. It is one of the most fundamental reactions sustaining nearly all life on Earth.
+  </p>
+  <p class="section-text">
+    The word itself comes from the Greek: <em class="text-highlight">photo</em> meaning "light," and <em class="text-highlight">synthesis</em> meaning "to put together." Plants put sunlight together with simple raw materials to manufacture their own food — a feat of molecular engineering no human technology has truly replicated.
+  </p>
+
+  <!-- Equation -->
+  <div class="equation-wrap">
+    <p class="equation-label">The Overall Equation</p>
+    <div class="equation">
+      <div class="eq-group">
+        <div class="eq-molecule">
+          <span class="eq-formula co2">6CO<sub>2</sub></span>
+          <span class="eq-name">Carbon dioxide</span>
+        </div>
+        <span class="eq-plus">+</span>
+        <div class="eq-molecule">
+          <span class="eq-formula h2o">6H<sub>2</sub>O</span>
+          <span class="eq-name">Water</span>
+        </div>
+      </div>
+
+      <div class="eq-light">
+        <div class="eq-light-icon">
+          <i data-lucide="sun"></i>
+        </div>
+        <span class="eq-arrow">⟶</span>
+        <span class="eq-light-label">Light energy</span>
+      </div>
+
+      <div class="eq-group">
+        <div class="eq-molecule">
+          <span class="eq-formula glucose">C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></span>
+          <span class="eq-name">Glucose</span>
+        </div>
+        <span class="eq-plus">+</span>
+        <div class="eq-molecule">
+          <span class="eq-formula oxygen">6O<sub>2</sub></span>
+          <span class="eq-name">Oxygen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- INGREDIENTS -->
+<section class="reveal">
+  <p class="section-label">02 — Ingredients</p>
+  <h2 class="section-title">What Plants <em>Need</em></h2>
+  <p class="section-text">Three essential raw materials feed the photosynthetic machine — each arriving from a completely different corner of the plant's environment.</p>
+
+  <div class="ingredients-grid">
+    <div class="ingredient-card card-sunlight">
+      <div class="ing-icon">
+        <i data-lucide="sun"></i>
+      </div>
+      <h3 class="ing-title">Sunlight</h3>
+      <p class="ing-formula">Electromagnetic Radiation</p>
+      <p class="ing-desc">Absorbed mainly in the red and blue wavelengths by chlorophyll pigments embedded in the thylakoid membranes. This radiant energy drives the entire photosynthetic engine, splitting water molecules and powering ATP synthesis.</p>
+    </div>
+    <div class="ingredient-card card-water">
+      <div class="ing-icon">
+        <i data-lucide="droplets"></i>
+      </div>
+      <h3 class="ing-title">Water</h3>
+      <p class="ing-formula">H₂O</p>
+      <p class="ing-desc">Absorbed through the roots and transported upward via the xylem. Water molecules are split during the light-dependent reactions in a process called photolysis, releasing electrons and oxygen as a by-product.</p>
+    </div>
+    <div class="ingredient-card card-co2">
+      <div class="ing-icon">
+        <i data-lucide="wind"></i>
+      </div>
+      <h3 class="ing-title">Carbon Dioxide</h3>
+      <p class="ing-formula">CO₂</p>
+      <p class="ing-desc">Diffuses into the leaf through microscopic pores called stomata, mostly on the underside of leaves. In the Calvin Cycle, carbon dioxide molecules are captured and "fixed" into organic carbon compounds — the building blocks of glucose.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- HOW IT WORKS -->
+<section class="reveal">
+  <p class="section-label">03 — Mechanism</p>
+  <h2 class="section-title">How It <em>Works</em></h2>
+  <p class="section-text">Photosynthesis unfolds in two interconnected stages, both taking place inside the <em class="text-highlight">chloroplast</em> — the green organelle found in plant cells.</p>
+
+  <!-- Chloroplast diagram -->
+  <div class="chloro-container">
+    <div class="chloro-diagram">
+      <div class="chloro-outer"></div>
+      <div class="thylakoid th-1"></div>
+      <div class="thylakoid th-2"></div>
+      <div class="thylakoid th-3"></div>
+      <div class="grana-dot gd1"></div>
+      <div class="grana-dot gd2"></div>
+      <div class="grana-dot gd3"></div>
+      <div class="grana-dot gd4"></div>
+      <div class="label-beam lb-thylakoid">
+        <div class="lb-line"></div>
+        Thylakoids
+      </div>
+      <div class="label-beam lb-stroma">
+        Stroma
+        <div class="lb-line"></div>
+      </div>
+    </div>
+    <p class="chloro-caption">Chloroplast — site of photosynthesis</p>
+  </div>
+
+  <div class="steps-container">
+    <div class="step-item">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <p class="step-tag">Light-Dependent Reactions</p>
+        <h3 class="step-title">Capturing the Sun</h3>
+        <p class="step-desc">These reactions occur in the <strong class="step-strong">thylakoid membranes</strong>. When sunlight strikes chlorophyll, it excites electrons to a higher energy state. These energized electrons travel down an electron transport chain, releasing energy that is used to produce ATP and NADPH — the cell's energy currency. Meanwhile, water molecules are split (photolysis), releasing oxygen into the air as a by-product — the very oxygen we breathe.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <p class="step-tag">Calvin Cycle · Light-Independent</p>
+        <h3 class="step-title">Building Glucose</h3>
+        <p class="step-desc">Taking place in the fluid-filled <strong class="step-strong">stroma</strong>, the Calvin Cycle uses the ATP and NADPH from Stage 1 to convert carbon dioxide from the air into glucose. An enzyme called RuBisCO "fixes" carbon dioxide molecules, and through a series of chemical reactions, a 3-carbon molecule (G3P) is assembled. Multiple G3P molecules are then combined to form glucose — the plant's food.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <p class="step-tag">Role of Chlorophyll</p>
+        <h3 class="step-title">The Green Pigment</h3>
+        <p class="step-desc">Chlorophyll is the green pigment inside chloroplasts that gives plants their color. It absorbs red and blue light most efficiently while reflecting green light — which is why we see plants as green. There are two main types: <strong class="step-strong">chlorophyll a</strong> and <strong class="step-strong">chlorophyll b</strong>, working together to capture the broadest possible spectrum of usable sunlight.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">04</div>
+      <div class="step-content">
+        <p class="step-tag">Stomata & Gas Exchange</p>
+        <h3 class="step-title">The Leaf's Breathing Pores</h3>
+        <p class="step-desc">Tiny pores called <strong class="step-strong">stomata</strong> on leaf surfaces control gas exchange. CO₂ enters and O₂ exits through these openings, which are guarded by specialized cells that can open or close depending on light, temperature, and water availability. On a hot, dry day, stomata close to prevent water loss — temporarily slowing photosynthesis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PRODUCTS -->
+<section class="reveal">
+  <p class="section-label">04 — Products</p>
+  <h2 class="section-title">What Plants <em>Produce</em></h2>
+  <p class="section-text">Two extraordinary outputs emerge from the photosynthetic process — one fuels all life, the other makes that life possible.</p>
+
+  <div class="products-grid">
+    <div class="product-card pc-glucose">
+      <div class="pc-icon">
+        <i data-lucide="candy"></i>
+      </div>
+      <h3 class="pc-name pc-name-glucose">Glucose</h3>
+      <p class="pc-formula">C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></p>
+      <p class="pc-desc">The primary energy-rich sugar produced by photosynthesis. Plants use glucose as fuel for growth, repair, and reproduction. It is stored as starch or converted into cellulose for structural support. When animals eat plants, they access this stored solar energy.</p>
+    </div>
+    <div class="product-card pc-oxygen">
+      <div class="pc-icon">
+        <i data-lucide="air-vent"></i>
+      </div>
+      <h3 class="pc-name pc-name-oxygen">Oxygen</h3>
+      <p class="pc-formula">O<sub>2</sub></p>
+      <p class="pc-desc">Released as a by-product when water is split during the light reactions, oxygen diffuses out through the stomata into the atmosphere. Virtually all the oxygen in Earth's atmosphere was produced by photosynthetic organisms over billions of years of evolution.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- WHY IT MATTERS -->
+<section class="reveal">
+  <p class="section-label">05 — Significance</p>
+  <h2 class="section-title">Why It <em>Matters</em></h2>
+  <p class="section-text">Photosynthesis is not just a plant process — it is the cornerstone of life on Earth, with implications that ripple through every ecosystem, climate system, and food chain on the planet.</p>
+
+  <div class="importance-list">
+    <div class="importance-item">
+      <span class="imp-num">01</span>
+      <div class="imp-content">
+        <h4 class="imp-title">Foundation of All Food Chains</h4>
+        <p class="imp-desc">Plants are primary producers — the very first link in virtually every food chain. By converting sunlight into chemical energy, they make that energy available to herbivores, which in turn feed carnivores. Without photosynthesis, no food chain could exist.</p>
+      </div>
+    </div>
+    <div class="importance-item">
+      <span class="imp-num">02</span>
+      <div class="imp-content">
+        <h4 class="imp-title">Oxygen for Life</h4>
+        <p class="imp-desc">Every breath you take is made possible by photosynthesis. The 21% oxygen concentration in Earth's atmosphere is maintained almost entirely by photosynthetic organisms — from giant rainforest trees to microscopic marine phytoplankton.</p>
+      </div>
+    </div>
+    <div class="importance-item">
+      <span class="imp-num">03</span>
+      <div class="imp-content">
+        <h4 class="imp-title">Carbon Dioxide Regulation</h4>
+        <p class="imp-desc">Plants absorb CO₂ from the atmosphere during photosynthesis, making them critical carbon sinks. Forests and oceans sequester vast amounts of carbon, playing an essential role in moderating Earth's climate and counteracting greenhouse gas emissions.</p>
+      </div>
+    </div>
+    <div class="importance-item">
+      <span class="imp-num">04</span>
+      <div class="imp-content">
+        <h4 class="imp-title">Fossil Fuels — Ancient Sunlight</h4>
+        <p class="imp-desc">Coal, oil, and natural gas are the fossilized remains of ancient photosynthetic organisms. The energy locked in these fuels is, in essence, sunlight captured by plants hundreds of millions of years ago — making photosynthesis the original source of most energy humans use today.</p>
+      </div>
+    </div>
+    <div class="importance-item">
+      <span class="imp-num">05</span>
+      <div class="imp-content">
+        <h4 class="imp-title">Agriculture & Global Food Supply</h4>
+        <p class="imp-desc">All crops — wheat, rice, corn, vegetables, fruits — grow through photosynthesis. Understanding and optimizing this process is central to developing drought-resistant crops, improving yields, and feeding a growing global population in the face of climate change.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-leaf">
+    <i data-lucide="leaf"></i>
+  </div>
+  <p class="footer-text">Photosynthesis — Food Making in Plants &nbsp;·&nbsp; Plant Biology</p>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = (mx - 5) + 'px';
+  cursor.style.top = (my - 5) + 'px';
+  ring.style.left = (mx - 18) + 'px';
+  ring.style.top = (my - 18) + 'px';
+});
+document.addEventListener('mousedown', () => cursor.style.transform = 'scale(2)');
+document.addEventListener('mouseup', () => cursor.style.transform = 'scale(1)');
+
+// Particle system
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const colors = ['rgba(74,158,104,', 'rgba(168,213,181,', 'rgba(201,168,76,', 'rgba(45,110,71,'];
+
+for (let i = 0; i < 55; i++) {
+  particles.push({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    r: Math.random() * 2.5 + 0.5,
+    dx: (Math.random() - 0.5) * 0.35,
+    dy: (Math.random() - 0.5) * 0.35 - 0.1,
+    col: colors[Math.floor(Math.random() * colors.length)],
+    a: Math.random() * 0.6 + 0.2
+  });
+}
+
+function animParticles() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = p.col + p.a + ')';
+    ctx.fill();
+    p.x += p.dx; p.y += p.dy;
+    if (p.x < 0) p.x = W;
+    if (p.x > W) p.x = 0;
+    if (p.y < 0) p.y = H;
+    if (p.y > H) p.y = 0;
+  });
+  requestAnimationFrame(animParticles);
+}
+animParticles();
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal, .step-item');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), e.target.classList.contains('step-item') ? 100 : 0);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach(el => observer.observe(el));
+
+// Stagger step items
+const steps = document.querySelectorAll('.step-item');
+steps.forEach((s, i) => {
+  s.style.transitionDelay = (i * 0.12) + 's';
+});
+
+// Initialize Lucide icons
+lucide.createIcons();
+</script>
+</body>
+</html>
